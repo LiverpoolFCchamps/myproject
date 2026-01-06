@@ -5,8 +5,8 @@ import joblib
 import requests
 import io
 
-st.set_page_config(page_title="Handwritten Digit Recognition", page_icon="✍️")
-st.title("✍️ Handwritten Digit Recognition")
+st.set_page_config(page_title="Handwritten Digit Recognition", page_icon="")
+st.title(" Handwritten Digit Recognition")
 st.write("Upload a handwritten digit image and AI will try to recognize it.")
 
 # Simple model loading with fallback
