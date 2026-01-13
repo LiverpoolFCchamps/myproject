@@ -1,0 +1,39 @@
+import streamlit as st
+import pandas as pd
+
+st.title("📊 Любими неща - класна анкета")
+
+# 1. Initialize data (as seen in your image)
+if "colors" not in st.session_state:
+    st.session_state.colors = {"Червен": 0, "Син": 0, "Зелен": 0, "Жълт": 0}
+
+if "sports" not in st.session_state:
+    st.session_state.sports = {"Футбол": 0, "Баскетбол": 0, "Волейбол": 0, "Плуване": 0}
+
+st.subheader("Избери любими неща")
+
+# 2. Input widgets
+color = st.selectbox("Любим цвят:", list(st.session_state.colors.keys()))
+sport = st.selectbox("Любим спорт:", list(st.session_state.sports.keys()))
+
+# 3. Logic to update counts when button is clicked
+if st.button("Гласувай"):
+    st.session_state.colors[color] += 1
+    st.session_state.sports[sport] += 1
+    st.success("Твоят глас беше изпратен!")
+
+# 4. Display Results
+st.divider()
+st.subheader("Текущи резултати")
+
+col1, col2 = st.columns(2)
+
+with col1:
+    st.write("**Цветове**")
+    color_df = pd.DataFrame(st.session_state.colors.items(), columns=["Цвят", "Гласове"])
+    st.bar_chart(color_df.set_index("Цвят"))
+
+with col2:
+    st.write("**Спортове**")
+    sport_df = pd.DataFrame(st.session_state.sports.items(), columns=["Спорт", "Гласове"])
+    st.bar_chart(sport_df.set_index("Спорт"))
