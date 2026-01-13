@@ -1,0 +1,6 @@
+if st.button("Нулирай резултатите"):
+    for key in st.session_state.colors:
+        st.session_state.colors[key] = 0
+    for key in st.session_state.sports:
+        st.session_state.sports[key] = 0
+    st.rerun()
