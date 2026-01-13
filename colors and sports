@@ -1,7 +1,7 @@
 import streamlit as st
 import pandas as pd
 
-st.title("📊 Любими неща - класна анкета")
+st.title("Любими неща - класна анкета")
 
 # 1. Initialize data (as seen in your image)
 if "colors" not in st.session_state:
